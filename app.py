@@ -9,7 +9,7 @@ from PIL import Image
 import google.generativeai as genai
 
 
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+genai.configure(api_key=api_key)
 
 def get_gemini_response(input, image, prompt):
     model = genai.GenerativeModel("gemini-pro-vision")
@@ -32,6 +32,10 @@ def input_image_setup(uploaded_file):
         raise FileNotFoundError("No file uploaded")
     
 def main():
+
+    ## Sidebar for settings
+    st.sidebar.title("Settings")
+    api_key=st.sidebar.text_input("Enter your Gemini API Key:",type="password")
     
     st.set_page_config(page_title="Nutritionist-Food-Recognition-APP", page_icon="🍲")
     st.header("Your Dietitian and Nutritionist")
