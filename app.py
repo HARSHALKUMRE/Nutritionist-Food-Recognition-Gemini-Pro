@@ -6,13 +6,15 @@ import os
 import pathlib
 import textwrap
 from PIL import Image
-import google.generativeai as genai
+#import google.generativeai as genai
+from langchain_google_genai import ChatGoogleGenerativeAI
+import getpass
 
 
-genai.configure(api_key=google_api_key)
+#genai.configure(api_key=google_api_key)
 
 def get_gemini_response(input, image, prompt):
-    model = genai.GenerativeModel("gemini-pro-vision")
+    model = ChatGoogleGenerativeAI("gemini-pro-vision")
     response = model.generate_content([input, image[0], prompt])
     return response.text 
 
@@ -34,6 +36,7 @@ def input_image_setup(uploaded_file):
 ## Sidebar for settings
 st.sidebar.title("Settings")
 google_api_key=st.sidebar.text_input("Enter your Gemini API Key:",type="password")
+getpass.getpass(google_api_key)
     
 st.set_page_config(page_title="Nutritionist-Food-Recognition-APP", page_icon="🍲")
 st.header("Your Dietitian and Nutritionist")
