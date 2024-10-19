@@ -11,7 +11,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 import getpass
 
 
-genai.configure(api_key=google_api_key)
+genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
 
 def get_gemini_response(input, image, prompt):
     model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
