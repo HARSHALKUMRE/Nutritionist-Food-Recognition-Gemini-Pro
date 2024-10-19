@@ -33,12 +33,12 @@ def input_image_setup(uploaded_file):
     else:
         raise FileNotFoundError("No file uploaded")
     
-
-os.environ["GOOGLE_API_KEY"] == st.secrets["GOOGLE_API_KEY"]
     
 st.set_page_config(page_title="Nutritionist-Food-Recognition-APP", page_icon="🍲")
 st.header("Your Dietitian and Nutritionist")
-    
+
+os.environ["GOOGLE_API_KEY"] == st.secrets["GOOGLE_API_KEY"]
+
 language_options = ["English", "Hindi"]
 selected_language = st.selectbox("Select Language:", language_options)
     
